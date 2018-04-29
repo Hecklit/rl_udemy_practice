@@ -1,39 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from grid_world import standard_grid, negative_grid
+from utils import print_policy, print_values
 
 ALL_POSSIBLE_ACTIONS = ['U', 'D', 'L', 'R']
 SMALL_ENOUGH = 10e-4
 GAMMA = 0.9
 
-def print_values(V, g):
-    for i in range(g.width):
-        print('-'*28)
-        row = ''
-        for j in range(g.height):
-            v = V.get((i, j), 0)
-            if v >= 0:
-                row += ' {:0.2f} |'.format(v)
-            else:
-                row += '{:0.2f} |'.format(v)
-        print(row)
-        
-def print_policy(P, g):
-    for i in range(g.width):
-        print('-'*28)
-        row = ''
-        for j in range(g.height):
-            a = P.get((i, j), ' ')
-            row += '{}:  {}   |'.format((i, j), a)
-        print(row)
-
-def wind(a):
-    urne = ALL_POSSIBLE_ACTIONS + [a, a]
-    return np.random.choice(urne);
-
-
 if __name__ == '__main__':
-    # random intalize V and pi
+    # random initalize V and pi
     V = {}
     grid = negative_grid(-1.901)
     print('Rewards:')
