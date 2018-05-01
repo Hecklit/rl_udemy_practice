@@ -19,3 +19,13 @@ def print_policy(P, g):
             a = P.get((i, j), ' ')
             row += '  {}   |'.format(a)
         print(row)
+
+ALL_POSSIBLE_ACTIONS = ['U', 'D', 'L', 'R']
+import numpy as np
+
+def random_action(a, eps=0.1):
+    p = np.random.rand()
+    if p < (1-eps):
+        return a
+    else:
+        return np.random.choice(ALL_POSSIBLE_ACTIONS);
